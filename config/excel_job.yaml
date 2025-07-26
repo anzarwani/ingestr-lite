@@ -1,0 +1,15 @@
+job:
+  name: excel_job
+  source:
+    type: excel
+    path: ./data/student.xlsx
+  transformations:
+    - type: change_type
+      columns: 
+        age: int
+  destination:
+    type: postgres
+    config:
+      uri: ${DATABASE_URI}
+    table: student
+    mode: append

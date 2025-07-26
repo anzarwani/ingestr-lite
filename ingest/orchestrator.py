@@ -1,14 +1,16 @@
-from sources import csv_reader
+from sources import csv_reader, excel_reader
 from destinations import postgres_writer
-from transforms import drop_columns
+from transforms import drop_columns, change_type
 
 
 TRANSFORM_REGISTRY = {
-    "drop_columns":drop_columns.DropColumns
+    "drop_columns":drop_columns.DropColumns,
+    "change_type":change_type.ChangeType
 }
 
 SOURCE_REGISTRY = {
-    "csv":csv_reader.CSVReader
+    "csv":csv_reader.CSVReader,
+    "excel":excel_reader.ExcelReader
 }
 
 DESTINATION_REGISTRY = {
@@ -22,6 +24,7 @@ def run_job(config: dict):
     
     # Read data
     
+    
     df = SOURCE_REGISTRY[source_conf["type"]](**source_conf).read()
     
     # Apply Transformation
@@ -31,4 +34,5 @@ def run_job(config: dict):
         
         df = transformer.apply(df)
         
+    # Load to sink
     DESTINATION_REGISTRY[dest_conf["type"]](**dest_conf).write(df)
