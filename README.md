@@ -88,7 +88,7 @@ pip install -r requirements.txt
 Create a .env file in the root directory and add your database credentials:
 
 ```bash
-POSTGRES_URI=postgresql://username:password@localhost:5432/<dbname>
+DATABASE_URI=postgresql://username:password@localhost:5432/<dbname>
 ```
 
 ### 4. Run your ingestion job
