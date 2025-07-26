@@ -19,7 +19,7 @@ A minimal, flexible data ingestion engine written in Python. Inspired by [ingest
 ## Project Structure
 
 ```bash
-liteingestor/
+ingester-lite/
 │
 ├── ingest/                     # Core pipeline orchestration
 │   ├── __init__.py
