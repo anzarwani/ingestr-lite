@@ -1,0 +1,16 @@
+job:
+  name: sample_csv_job
+  source:
+    type: csv
+    path: ./data/sample.csv
+    options:
+      delimiter: ","
+  transformations:
+    - type: drop_columns
+      columns: ["sports"]
+  destination:
+  type: postgres
+  config:
+    uri: ${DATABASE_URI}
+  table: sample
+  mode: append

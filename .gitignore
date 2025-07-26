@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# macOS / Linux
+.DS_Store
+
+# Logs and local cache
+*.log
+*.sqlite3
+
+# Configs
+
