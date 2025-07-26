@@ -2,6 +2,8 @@
 
 A minimal, flexible data ingestion engine written in Python. Inspired by [ingestr](https://github.com/bruin-data/ingestr) but simplified for rapid development, better readability, and ease of extension.
 
+![Logo](./logo.png)
+
 ## Features
 
 - Modular pipeline: **Source → Transform → Destination**

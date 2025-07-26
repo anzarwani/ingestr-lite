@@ -1,16 +1,18 @@
-from sources import csv_reader, excel_reader
+from sources import csv_reader, excel_reader, json_reader
 from destinations import postgres_writer
-from transforms import drop_columns, change_type
+from transforms import drop_columns, change_type, rename_columns
 
 
 TRANSFORM_REGISTRY = {
     "drop_columns":drop_columns.DropColumns,
-    "change_type":change_type.ChangeType
+    "change_type":change_type.ChangeType,
+    'rename_columns':rename_columns.RenameColumns
 }
 
 SOURCE_REGISTRY = {
     "csv":csv_reader.CSVReader,
-    "excel":excel_reader.ExcelReader
+    "excel":excel_reader.ExcelReader,
+    "json":json_reader.JSONReader
 }
 
 DESTINATION_REGISTRY = {

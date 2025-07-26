@@ -1,0 +1,20 @@
+[
+  {
+    "product_id": "P1001",
+    "name": "Wireless Mouse",
+    "price": "499.99",
+    "category": "Electronics"
+  },
+  {
+    "product_id": "P1002",
+    "name": "Water Bottle",
+    "price": "199.00",
+    "category": "Kitchen"
+  },
+  {
+    "product_id": "P1003",
+    "name": "Yoga Mat",
+    "price": "799.50",
+    "category": "Fitness"
+  }
+]

@@ -1,0 +1,15 @@
+job:
+  name: json_job
+  source:
+    type: json
+    path: ./data/products.json
+  transformations:
+    - type: rename_columns
+      columns: 
+        name: product_name
+  destination:
+    type: postgres
+    config:
+      uri: ${DATABASE_URI}
+    table: products
+    mode: append
