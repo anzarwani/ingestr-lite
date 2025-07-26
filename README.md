@@ -7,7 +7,7 @@ A minimal, flexible data ingestion engine written in Python. Inspired by [ingest
 ## Features
 
 - Modular pipeline: **Source → Transform → Destination**
-- Supports common file formats: CSV, JSON, Parquet
+- Supports common file formats: CSV, JSON, Excel
 - Pluggable transformation steps (drop columns, cast types, custom logic)
 - Load into PostgreSQL, AzureSQL DB (work in progress)
 - Configurable via YAML and `.env` for secrets
@@ -31,11 +31,15 @@ ingester-lite/
 ├── sources/                    # Source connectors
 │   ├── __init__.py
 │   ├── csv_reader.py
+│   ├── excel_reader.py
+│   ├── json_reader.py
 │
 ├── transforms/               # Data transformations
 │   ├── __init__.py
 │   ├── base.py                 # Abstract base class
 │   ├── drop_columns.py         # drop columns
+│   ├── change_type.py          # for type casting
+│   ├── rename_columns.py       # renaming columns
 │
 ├── destinations/               # Destination writers
 │   ├── __init__.py
@@ -46,7 +50,9 @@ ingester-lite/
 │   ├── app.py                  # Typer CLI entrypoint
 │
 ├── config/                     # Example configs
-│   └── sample_config.yaml
+│   └── csv_job.yaml
+│   └── excel_job.yaml
+│   └── json_job.yaml
 │
 ├── tests/                      # Unit tests (pytest)
 │   └── ...
@@ -88,7 +94,7 @@ POSTGRES_URI=postgresql://username:password@localhost:5432/<dbname>
 ### 4. Run your ingestion job
 
 ```bash
-python cli/app.py config/sample_job.yaml
+python cli/app.py config/csv_job.yaml   # depends on what your source file is
 ```
 
 ---
@@ -97,6 +103,9 @@ Feel free to contribute:
 
 - Add source connectors
 - Add destinations sinks
+- Add monitoring dashboard (Preferrably Streamlit)
+- Logging
+
 
 
 
