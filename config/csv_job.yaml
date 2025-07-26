@@ -1,5 +1,5 @@
 job:
-  name: sample_csv_job
+  name: csv_job
   source:
     type: csv
     path: ./data/sample.csv
