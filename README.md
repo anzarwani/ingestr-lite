@@ -27,6 +27,8 @@ ingester-lite/
 │   ├── orchestrator.py         # Main job runner (source → transform → sink)
 │   ├── registry.py             # Maps type names to implementations
 │   ├── runner.py               # Callable from CLI or external script
+|   ├── prefect_flow.py         # to run prefect flow
+|   ├── prefect_scheduler.py    # Prefect Scheduler for scheduling
 │
 ├── sources/                    # Source connectors
 │   ├── __init__.py
@@ -91,20 +93,25 @@ Create a .env file in the root directory and add your database credentials:
 DATABASE_URI=postgresql://username:password@localhost:5432/<dbname>
 ```
 
-### 4. Run your ingestion job
+### 4. Run your ingestion job without scheduling
 
 ```bash
-python cli/app.py config/csv_job.yaml   # depends on what your source file is
+python cli/app.py run config/csv_job.yaml   # depends on what your source file is
 ```
 
+### 5. Run your ingestion job with prefect scheduling
+
+```bash
+python cli/app.py schedule config/csv_job.yaml   # depends on what your source file is
+```
+- Note : You may run into issue while running the scheduling job, I have included a typer to help you out with the instructions when you run the scheduler. 
 ---
 
 Feel free to contribute:
 
 - Add source connectors
 - Add destinations sinks
-- Add monitoring dashboard (Preferrably Streamlit)
-- Logging
+- Perfecting (hehe) Prefect scheduler.
 
 
 

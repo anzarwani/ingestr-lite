@@ -9,8 +9,8 @@ job:
     - type: drop_columns
       columns: ["sports"]
   destination:
-  type: postgres
-  config:
-    uri: ${DATABASE_URI}
-  table: sample
-  mode: append
+    type: postgres
+    config:
+      uri: ${DATABASE_URI}
+    table: sample
+    mode: append

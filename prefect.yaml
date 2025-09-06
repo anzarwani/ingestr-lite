@@ -1,0 +1,15 @@
+build: null
+deployments:
+- entrypoint: ingest.prefect_flow:etl_flow
+  name: csv_job
+  parameters: {}
+  schedules: []
+  tags: []
+  work_pool:
+    name: default
+    work_queue_name: null
+name: csv_job
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: D:\ingestr-lite
+push: null
