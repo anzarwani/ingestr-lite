@@ -1,0 +1,19 @@
+job:
+  name: api_job
+  source:
+    type: api
+    url: "https://official-joke-api.appspot.com/random_joke"
+    method: GET
+    headers: {}
+    params: {}
+    json_key: null
+  transformations:
+    - type: rename_columns
+      columns: 
+        id: joke_id
+  destination:
+    type: postgres
+    config:
+      uri: ${DATABASE_URI}
+    table: jokes
+    mode: append

@@ -1,7 +1,6 @@
-from sources import csv_reader, excel_reader, json_reader
+from sources import csv_reader, excel_reader, json_reader, api_reader
 from destinations import postgres_writer
 from transforms import drop_columns, change_type, rename_columns
-
 
 TRANSFORM_REGISTRY = {
     "drop_columns":drop_columns.DropColumns,
@@ -12,7 +11,8 @@ TRANSFORM_REGISTRY = {
 SOURCE_REGISTRY = {
     "csv":csv_reader.CSVReader,
     "excel":excel_reader.ExcelReader,
-    "json":json_reader.JSONReader
+    "json":json_reader.JSONReader,
+    "api":api_reader.APIReader,
 }
 
 DESTINATION_REGISTRY = {
@@ -25,7 +25,6 @@ def run_job(config: dict):
     transform_conf = config["job"].get("transformations", [])
     
     # Read data
-    
     
     df = SOURCE_REGISTRY[source_conf["type"]](**source_conf).read()
     
